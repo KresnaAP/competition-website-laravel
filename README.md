@@ -1,6 +1,18 @@
 # How To Use
 ## Instruction :
-1. Type in your terminal: composer require laravel/ui
-2. Type in your terminal: composer dump-autoload
-3. Create db named competition in your sql and run php artisan migrate --seed to create basic users table
-4. To view: run php artisan serve and  go to your browser at localhost:8000
+1. Install `laravel/ui` package
+    ```sh
+    $ composer require laravel/ui
+    ```
+2. Run
+    ```sh
+    $ composer dump-autoload
+    ```
+3. Create a database named `competition` in your `SQL` and to create basic users table, run
+    ```sh
+    $ php artisan migrate --seed
+    ``` 
+4. To view, run 
+    ```sh
+    $ php artisan serve
+    ``` 
