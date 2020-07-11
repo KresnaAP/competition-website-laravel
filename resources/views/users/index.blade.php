@@ -13,7 +13,7 @@
                                 <h3 class="mb-0">Users</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="" class="btn btn-sm btn-primary">Add user</a>
+                                <a href="/user/create" class="btn btn-sm btn-primary">Add user</a>
                             </div>
                         </div>
                     </div>
@@ -34,19 +34,20 @@
                             <tbody>
                                 @foreach($users as $user)
                                     <tr>
-                                        <td>{{$user->name}}</td>
+                                        <td>{{ $user->name }}</td>
                                         <td>
-                                            <a href="mailto:{{$user->email}}">{{$user->email}}</a>
+                                            <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                         </td>
-                                        <td>12/02/2020 11:00</td>
+                                        <td>{{ $user->created_at }}</td>
                                         <td class="text-right">
-                                            <div class="dropdown">
+                                            <div class="dropleft">
                                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                    <a class="dropdown-item" href="">Edit</a>
+                                                    <a class="dropdown-item" href="/user/edit/{{ $user->id }}">Edit</a>
+                                                    <a class="dropdown-item" href="/user/delete/{{ $user->id }}">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
