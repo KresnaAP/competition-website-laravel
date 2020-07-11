@@ -57,7 +57,7 @@ class UserController extends Controller
 
     public function delete($id)
     {
-        $user = DB::table('users')->where('id', $id)->delete();
-        return redirect('/user');
+        User::find($id)->delete();
+        return back()->with('success','User successfully deleted');
     }
 }
