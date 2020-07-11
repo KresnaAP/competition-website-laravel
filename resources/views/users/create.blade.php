@@ -1,56 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Add User</title>
-	<!-- Favicon -->
-	<link href="{{ asset('argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
-	<!-- Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-	<!-- Icons -->
-	<link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-	<link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-	<!-- Argon CSS -->
-	<link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
-</head>
-<body>
-	<div class="border border-primary rounded bg-primary">
-		<h3 class="text-center mt-4">Add User</h3>
+@extends('layouts.app')
 
-		<a href="/user" class="btn btn-default">Back</a>
-		
-		<br/>
-		<br/>
+@section('content')
+	<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
 
-		<form action="/user/store" method="post">
-			@csrf
-			<div class="row justify-content-center">
-				<div class="col-md-4">
-					<div class="form-group">
-						<label class="text-light">Name</label> 
-						<input type="text" class="form-control form-control-alternative" required="required" name="name" placeholder="Name"> <br/>
-					</div>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-4">
-					<div class="form-group">
-						<label class="text-light">Email</label> 
-						<input type="email" class="form-control form-control-alternative" required="required" name="email" placeholder="Email"> <br/>
-					</div>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-4">
-					<div class="form-group">
-						<label class="text-light">Password</label> 
-						<input type="password" class="form-control form-control-alternative" required="required" name="password" placeholder="Password"> <br/>
-					</div>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<button type="submit" class="btn btn-success mb-4">{{ __('Save') }}</button>
-			</div>
-		</form>
 	</div>
-</body>
-</html>
+
+	<div class="container-fluid mt--7">
+		<div class="row">
+			<div class="col">
+				<div class="card bg-secondary shadow">
+					<div class="card-header bg-white border-0">
+						<div class="row align-items-center">
+							<div class="mx-2">
+								<a href="/user" class="btn btn-sm btn-default">Back</a>
+							</div>
+                            <h3 class="col-4 mb-0">Add User</h3>
+                        </div>
+					</div>
+					<div class="card-body">
+						<form action="/user/store" method="post">
+							@csrf
+							<div class="row justify-content-center">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="form-control-label">Name</label> 
+										<input type="text" class="form-control form-control-alternative" required="required" name="name" placeholder="Name"> <br/>
+									</div>
+								</div>
+							</div>
+							<div class="row justify-content-center">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="form-control-label">Email</label> 
+										<input type="email" class="form-control form-control-alternative" required="required" name="email" placeholder="Email"> <br/>
+									</div>
+								</div>
+							</div>
+							<div class="row justify-content-center">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="form-control-label">Password</label> 
+										<input type="password" class="form-control form-control-alternative" required="required" name="password" placeholder="Password"> <br/>
+									</div>
+								</div>
+							</div>
+							<div class="row justify-content-center">
+								<button type="submit" class="btn btn-success mb-4">{{ __('Save') }}</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		@include('layouts.footers.auth')
+	</div>
+@endsection
