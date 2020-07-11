@@ -13,34 +13,39 @@
     <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
 </head>
 <body>
-    <h3>Edit User</h3>
+    <div class="border border-primary rounded bg-primary">
+        <h3 class="text-center mt-4">Edit User</h3>
 
-    <a href="/user" class="btn btn-primary">Back</a>
-    
-    <br/>
-    <br/>
+        <a href="/user" class="btn btn-default">Back</a>
+        
+        <br/>
+        <br/>
 
-    @foreach($user as $u)
-    <form action="/user/update" method="post">
-        @csrf
-        <input type="hidden" name="id" value="{{ $u->id }}"> <br/>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    Name <input type="text" class="form-control form-control-alternative" required="required" name="name" value="{{ $u->name }}"> <br/>
+        @foreach($user as $u)
+        <form action="/user/update" method="post">
+            @csrf
+            <input type="hidden" name="id" value="{{ $u->id }}"> <br/>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="text-light">Name</label> 
+                        <input type="text" class="form-control form-control-alternative" required="required" name="name" value="{{ $u->name }}"> <br/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    Email <input type="email" class="form-control form-control-alternative" required="required" name="email" value="{{ $u->email }}"> <br/>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="text-light">Email</label>
+                        <input type="email" class="form-control form-control-alternative" required="required" name="email" value="{{ $u->email }}"> <br/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
-    </form>
-    @endforeach
-
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-success mb-4">{{ __('Save') }}</button>
+            </div>
+        </form>
+        @endforeach
+    </div>
 </body>
 </html>
