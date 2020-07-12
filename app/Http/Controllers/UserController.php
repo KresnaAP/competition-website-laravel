@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Http\Requests\UserPasswordRequest;
+use App\Http\Requests\UserProfileRequest;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -32,7 +34,7 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         User::insert([
         'name' => $request->name,
@@ -41,7 +43,7 @@ class UserController extends Controller
         'updated_at' => now()->addHours(7),
         'password' => Hash::make($request->password)
         ]);
-        return redirect('/user');
+        return back()->withStatus(__('Profile successfully created.'));
     }
 
     public function edit($id)
@@ -50,14 +52,10 @@ class UserController extends Controller
         return view('users.edit', ['user' => $user]);
     }
 
-    public function update(Request $request)
+    public function update(UserProfileRequest $request)
     {
-        User::find($request->id)->update([
-        'name' => $request->name,
-        'email' => $request->email,
-        'updated_at' => now()->addHours(7)
-        ]);
-        return redirect('/user');
+        User::find($request->id)->update($request->all());
+        return back()->withStatus(__('Profile successfully updated.'));
     }
 
     public function delete($id)

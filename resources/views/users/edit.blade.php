@@ -20,29 +20,49 @@
                     </div>
                     <div class="card-body">
                         @foreach($user as $u)
-                        <form action="/user/update" method="post">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $u->id }}"> <br/>
-                            <div class="row justify-content-center">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="form-control-label">Name</label> 
-                                        <input type="text" class="form-control form-control-alternative" required="required" name="name" value="{{ $u->name }}"> <br/>
+                            <form method="post" action="/user/update" autocomplete="off">
+                                @csrf
+                                @method('put')
+
+                                <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
+                                
+                                @if (session('status'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ session('status') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+
+                                <div class="pl-lg-4">
+                                    <input type="hidden" name="id" value="{{ $u->id }}"><br/>
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
+                                        <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name', $u->name) }}" required autofocus>
+
+                                        @if ($errors->has('name'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
+                                        <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email', $u->email) }}" required>
+
+                                        @if ($errors->has('email'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="form-control-label">Email</label>
-                                        <input type="email" class="form-control form-control-alternative" required="required" name="email" value="{{ $u->email }}"> <br/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <button type="submit" class="btn btn-success mb-4">{{ __('Save') }}</button>
-                            </div>
-                        </form>
+                            </form>
                         @endforeach
                     </div>
                 </div>
