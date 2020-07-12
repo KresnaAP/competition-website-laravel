@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.headers.cards')
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+
+    </div>
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -9,11 +11,11 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
-                            <div class="col-8">
-                                <h3 class="mb-0">Users</h3>
+                            <div class="mx-2">
+                                <a href="/user" class="btn btn-sm btn-default">Back</a>
                             </div>
-                            <div class="col-4 text-right">
-                                <a href="/user/create" class="btn btn-sm btn-primary">Add user</a>
+                            <div class="col-8">
+                                <h3 class="mb-0">Search Results for <b>'{{ $search }}'</b></h3>
                             </div>
                         </div>
                     </div>

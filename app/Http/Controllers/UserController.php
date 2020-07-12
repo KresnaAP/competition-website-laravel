@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -18,8 +17,14 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
-        $users = User::all();
-        return view('users.index', compact('users'));
+        $users = User::paginate(10);
+        return view('users.index', ['users' => $users]);
+    }
+
+    public function search(Request $request)
+    {
+        $users = User::where('email', 'like', '%'.$request->search.'%')->orWhere('email', 'like', '%'.$request->search.'%')->paginate(10);
+        return view('users.search', ['search' => $request->search, 'users' => $users]);
     }
 
     public function create()
@@ -29,7 +34,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        DB::table('users')->insert([
+        User::insert([
         'name' => $request->name,
         'email' => $request->email,
         'created_at' => now()->addHours(7),
@@ -41,13 +46,13 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = DB::table('users')->where('id', $id)->get();
+        $user = User::where('id', $id)->get();
         return view('users.edit', ['user' => $user]);
     }
 
     public function update(Request $request)
     {
-        DB::table('users')->where('id', $request->id)->update([
+        User::find($request->id)->update([
         'name' => $request->name,
         'email' => $request->email,
         'updated_at' => now()->addHours(7)
