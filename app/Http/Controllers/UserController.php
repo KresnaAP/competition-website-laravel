@@ -36,12 +36,10 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        User::insert([
-        'name' => $request->name,
-        'email' => $request->email,
-        'created_at' => now()->addHours(7),
-        'updated_at' => now()->addHours(7),
-        'password' => Hash::make($request->password)
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
         return back()->withStatus(__('Profile successfully created.'));
     }
@@ -56,6 +54,12 @@ class UserController extends Controller
     {
         User::find($request->id)->update($request->all());
         return back()->withStatus(__('Profile successfully updated.'));
+    }
+
+    public function password(UserPasswordRequest $request)
+    {
+        User::find($request->id)->update(['password' => Hash::make($request->get('password'))]);
+        return back()->withPasswordStatus(__('Password successfully updated.'));
     }
 
     public function delete($id)
