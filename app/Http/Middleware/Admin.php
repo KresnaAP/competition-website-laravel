@@ -25,6 +25,6 @@ class Admin
         if ($this->auth === true)
             return $next($request);
 
-        return redirect()->route('login')->with('error', 'Acces denied. Login to continue.');
+        return abort(404);
     }
 }
