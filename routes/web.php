@@ -24,15 +24,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['middleware' => 'admin'], function () {
+    Route::resource('user', 'AdminController', ['except' => ['show']]);
+    Route::get('user/search','AdminController@search');
+    Route::get('user/create','AdminController@create');
+    Route::post('user/store','AdminController@store');
+    Route::get('user/edit/{id}','AdminController@edit');
+    Route::post('user/update','AdminController@update');
+    Route::post('user/password','AdminController@password');
+    Route::get('user/delete/{id}','AdminController@delete');
+});
+
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('user', 'UserController', ['except' => ['show']]);
-    Route::get('user/search','UserController@search');
-    Route::get('user/create','UserController@create');
-    Route::post('user/store','UserController@store');
-    Route::get('user/edit/{id}','UserController@edit');
-    Route::post('user/update','UserController@update');
-    Route::post('user/password','UserController@password');
-    Route::get('user/delete/{id}','UserController@delete');
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);

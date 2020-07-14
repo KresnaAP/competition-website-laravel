@@ -92,11 +92,13 @@
                                     {{ __('User profile') }}
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('User Management') }}
-                                </a>
-                            </li>
+                            @admin
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.index') }}">
+                                        {{ __('User Management') }}
+                                    </a>
+                                </li>
+                            @endadmin
                         </ul>
                     </div>
                 </li>
