@@ -78,30 +78,22 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button"
-                        aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fa fa-user" style="color: #f4645f;"></i>
-                        <span class="nav-link-text"
-                            style="color: #f4645f;">{{ __('Profile') }}</span>
+                    <a class="nav-link" href="{{ route('profile.edit') }}">
+                        <i class="ni fa fa-user text-primary"></i>{{ __('Profile') }}
                     </a>
-
-                    <div class="collapse show" id="navbar-examples">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
-                                    {{ __('User profile') }}
-                                </a>
-                            </li>
-                            @admin
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.index') }}">
-                                        {{ __('User Management') }}
-                                    </a>
-                                </li>
-                            @endadmin
-                        </ul>
-                    </div>
                 </li>
+                @admin
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">
+                            <i class="ni fa fa-chart-bar text-primary"></i>{{ __('Analytics') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.index') }}">
+                            <i class="ni fa fa-users text-primary"></i>{{ __('User Management') }}
+                        </a>
+                    </li>
+                @endadmin
             </ul>
         </div>
     </div>
