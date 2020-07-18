@@ -20,9 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::resource('user', 'AdminController', ['except' => ['show']]);
@@ -33,6 +30,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('user/update','AdminController@update');
     Route::post('user/password','AdminController@password');
     Route::get('user/delete/{id}','AdminController@delete');
+    Route::get('user/analytics','AdminController@analytics');
 });
 
 Route::group(['middleware' => 'auth'], function () {

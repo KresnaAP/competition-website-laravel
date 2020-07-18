@@ -72,4 +72,9 @@ class AdminController extends Controller
         User::find($id)->delete();
         return back()->with('success','User successfully deleted');
     }
+
+    public function analytics()
+    {
+        return view('users.analytics');
+    }
 }
