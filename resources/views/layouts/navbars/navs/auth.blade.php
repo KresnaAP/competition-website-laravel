@@ -5,16 +5,18 @@
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
             href="{{ route('home') }}">{{ __('Dashboard') }}</a>
         <!-- Form -->
-        <form action="/user/search" method="GET" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-            <div class="form-group mb-0">
-                <div class="input-group input-group-alternative">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+        @admin
+            <form action="/user/search" method="GET" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+                <div class="form-group mb-0">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+                        <input class="form-control" name="search" placeholder="Search" type="text">
                     </div>
-                    <input class="form-control" name="search" placeholder="Search" type="text">
                 </div>
-            </div>
-        </form>
+            </form>
+        @endadmin
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
             <li class="nav-item dropdown">

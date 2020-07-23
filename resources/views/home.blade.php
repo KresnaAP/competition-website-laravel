@@ -4,49 +4,21 @@
     @include('layouts.headers.auth')
 
     <div class="container-fluid mt--7">
-        <div class="row">
-            <div class="col">
-                <div class="card text-center">
-                    <div class="card-header">
-                        First Member
-                    </div>
-                    <div class="card-body">
-                        <img src="https://sdm.mercubuana.ac.id/wp-content/plugins/post-grid/assets/frontend/css/images/placeholder.png" alt="image">
-                    </div>
-                    <div class="card-footer text-muted">
-                        Certificate
-                    </div>
-                  </div>
+        <div class="card text-center">
+
+            <div class="card-header">
+                <h1>Certificate</h1>
             </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col">
-                <div class="card text-center">
-                    <div class="card-header">
-                        Second Member
-                    </div>
-                    <div class="card-body">
+            <div class="card-body">
+            @foreach($members as $member)
+                <div class="row">
+                    <div class="col">
+                        <h2>{{ $member->name }}</h2>
                         <img src="https://sdm.mercubuana.ac.id/wp-content/plugins/post-grid/assets/frontend/css/images/placeholder.png" alt="image">
                     </div>
-                    <div class="card-footer text-muted">
-                        Certificate
-                    </div>
-                  </div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col">
-                <div class="card text-center">
-                    <div class="card-header">
-                        Third Member
-                    </div>
-                    <div class="card-body">
-                        <img src="https://sdm.mercubuana.ac.id/wp-content/plugins/post-grid/assets/frontend/css/images/placeholder.png" alt="image">
-                    </div>
-                    <div class="card-footer text-muted">
-                        Certificate
-                    </div>
-                  </div>
+                </div>
+                <hr class="my-5">
+            @endforeach
             </div>
         </div>
 

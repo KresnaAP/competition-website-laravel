@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $members = User::find(auth()->id())->members()->get();
+        return view('home', compact('members'));
     }
 }

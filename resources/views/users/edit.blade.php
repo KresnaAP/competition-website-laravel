@@ -10,7 +10,7 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="mx-2">
-                                <a href="/user" class="btn btn-sm btn-default">Back</a>
+                                <a href="{{ url()->back() }}" class="btn btn-sm btn-default">Back</a>
                             </div>
                             <h3 class="col-4 mb-0">Edit User</h3>
                         </div>
