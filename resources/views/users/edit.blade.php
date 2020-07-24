@@ -54,6 +54,19 @@
                                         @endif
                                     </div>
 
+                                    @foreach($u->members as $key => $member)
+                                        <div class="form-group{{ $errors->has('member-'.$key) ? ' has-danger' : '' }}">
+                                            <input type="hidden" name="member-{{ $key }}-id" value="{{ $member->id }}">
+                                            <label class="form-control-label" for="input-member-{{ $key }}">{{ __('Team Member ').($key + 1) }}</label>
+                                            <input type="text" name="member-{{ $key }}" id="input-member-{{ $key }}" class="form-control form-control-alternative{{ $errors->has('member-'.$key) ? ' is-invalid' : '' }}" placeholder="{{ __('Team Member ').($key + 1) }}" value="{{ old('name', $member->name) }}" required>
+                                            @if ($errors->has('member-'.$key))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('member'-$key) }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    @endforeach
+
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
                                     </div>
