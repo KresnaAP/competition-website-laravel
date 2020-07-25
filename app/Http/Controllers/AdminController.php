@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Member;
 use App\Http\Requests\UserPasswordRequest;
 use App\Http\Requests\UserProfileRequest;
 use App\Http\Requests\UserRequest;
@@ -58,6 +59,10 @@ class AdminController extends Controller
     public function update(UserProfileRequest $request)
     {
         User::find($request->id)->update($request->all());
+        for ($key = 0; $key < (count($request->all()) - 4) / 2; $key++)
+        {
+            Member::find($request->input('member-'.$key.'-id'))->update(['name' => $request->input('member-'.$key)]);
+        }
         return back()->withStatus(__('Profile successfully updated.'));
     }
 
