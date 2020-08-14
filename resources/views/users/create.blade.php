@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form role="form" method="POST" action="/user/store">
+                        <form role="form" method="POST" action="{{ route('user.store') }}">
                             @csrf
 
                             @if (session('status'))

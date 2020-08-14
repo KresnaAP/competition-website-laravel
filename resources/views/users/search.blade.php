@@ -48,8 +48,8 @@
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                    <a class="dropdown-item" href="/user/edit/{{ $user->id }}">Edit</a>
-                                                    <a class="dropdown-item warning-confirm" href="/user/delete/{{ $user->id }}">Delete</a>
+                                                    <a class="dropdown-item" href="{{ route('user.edit', ['id' => $user->id]) }}">Edit</a>
+                                                    <a class="dropdown-item warning-confirm" href="{{  route('user.edit', ['id' => $user->id]) }}">Delete</a>
                                                 </div>
                                             </div>
                                         </td>

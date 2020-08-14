@@ -955,7 +955,7 @@ var OrdersChart = (function() {
 							}
 
 							content += '<span class="popover-body-value">' + yLabel + '</span>';
-							
+
 							return content;
 						}
 					}
@@ -1004,7 +1004,7 @@ var SalesChart = (function() {
 	function init($chart) {
 
 		var salesChart = new Chart($chart, {
-			type: 'bar',
+			type: 'line',
 			options: {
 				scales: {
 					yAxes: [{

@@ -60,7 +60,7 @@
             </div>
             <!-- Form -->
             @admin
-                <form action="/user/search" method="GET" class="mt-4 mb-3 d-md-none">
+                <form action="{{ route('user.search') }}" method="GET" class="mt-4 mb-3 d-md-none">
                     <div class="input-group input-group-rounded input-group-merge">
                         <input type="search" name="search" class="form-control form-control-rounded form-control-prepended"
                             placeholder="{{ __('Search') }}" aria-label="Search">
@@ -86,7 +86,7 @@
                 </li>
                 @admin
                     <li class="nav-item">
-                        <a class="nav-link" href="/user/analytics">
+                        <a class="nav-link" href="{{ route('user.analytics') }}">
                             <i class="ni fa fa-chart-bar text-primary"></i>{{ __('Analytics') }}
                         </a>
                     </li>

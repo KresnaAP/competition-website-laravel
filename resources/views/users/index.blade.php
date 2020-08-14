@@ -13,7 +13,7 @@
                                 <h3 class="mb-0">Users</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="/user/create" class="btn btn-sm btn-primary">Add user</a>
+                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">Add user</a>
                             </div>
                         </div>
                     </div>
@@ -46,8 +46,8 @@
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                    <a class="dropdown-item" href="/user/edit/{{ $user->id }}">Edit</a>
-                                                    <a class="dropdown-item warning-confirm" href="/user/delete/{{ $user->id }}">Delete</a>
+                                                    <a class="dropdown-item" href="{{ route('user.edit', ['id' => $user->id]) }}">Edit</a>
+                                                    <a class="dropdown-item warning-confirm" href="{{  route('user.edit', ['id' => $user->id]) }}">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
