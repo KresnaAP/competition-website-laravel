@@ -1,6 +1,7 @@
 # How To Use
 ## Instruction :
 1. Install `laravel/ui` package
+
     ```sh
     $ composer require laravel/ui
     ```
