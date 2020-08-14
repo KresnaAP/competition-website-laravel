@@ -75,23 +75,23 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
+                    <a class="nav-link {{ Route::is('home') ? 'active' : '' }}" href="{{ route('home') }}">
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Home') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('profile.index') }}">
+                    <a class="nav-link {{ Route::is('profile.index') ? 'active' : '' }}" href="{{ route('profile.index') }}">
                         <i class="ni fa fa-user text-primary"></i>{{ __('Profile') }}
                     </a>
                 </li>
                 @admin
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.analytics') }}">
+                        <a class="nav-link {{ Route::is('user.analytics') ? 'active' : '' }}" href="{{ route('user.analytics') }}">
                             <i class="ni fa fa-chart-bar text-primary"></i>{{ __('Analytics') }}
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.index') }}">
+                        <a class="nav-link {{ Route::is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
                             <i class="ni fa fa-users text-primary"></i>{{ __('User Management') }}
                         </a>
                     </li>
