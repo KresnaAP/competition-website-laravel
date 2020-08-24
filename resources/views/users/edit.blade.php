@@ -17,7 +17,7 @@
                     </div>
                     <div class="card-body">
                         @foreach($user as $u)
-                            <form method="post" action="{{ route('user.update') }}" autocomplete="off">
+                            <form method="post" action="{{ route('user.update') }}" class="mb-5" autocomplete="off">
                                 @csrf
 
                                 <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
@@ -65,6 +65,16 @@
                                                 </span>
                                             @endif
                                         </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label small" for="input-certificate-{{ $key }}">Upload Certificate {{ $key + 1 }}</label>
+                                            @if($member->certificate)
+                                            <div>
+                                                <embed src="{{ url('/certificates/'.$member->certificate) }}" max-width="100%">
+                                            </div>
+                                            @endif
+                                            - certificate-{{ $key }}
+                                            <input type="file" name="certificate-{{ $key }}" id="input-certificate-{{ $key }}" class="form-control-file" accept="application/pdf">
+                                        </div>
                                     @endforeach
 
                                     <div class="text-center">
@@ -72,7 +82,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <form method="post" action="{{ route('user.password') }}" autocomplete="off">
+                            <form method="post" action="{{ route('user.password') }}" class="mb-5" autocomplete="off">
                                 @csrf
 
                                 <h6 class="heading-small text-muted mb-4">{{ __('Password') }}</h6>
