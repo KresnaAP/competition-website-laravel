@@ -13,7 +13,11 @@
     ```sh
     $ php artisan migrate --seed
     ``` 
-4. To view, run 
+5. To view, run 
+    ```sh
+    $ php artisan serve
+    ``` 
+5. To view, run 
     ```sh
     $ php artisan serve
     ``` 

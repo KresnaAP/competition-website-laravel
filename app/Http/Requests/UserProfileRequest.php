@@ -34,6 +34,12 @@ class UserProfileRequest extends FormRequest
             ],
             'email' => [
                 'required', 'email', Rule::unique((new User)->getTable())->ignore($this->id)
+            ],
+            'member-*' => [
+                'required'
+            ],
+            'certificate-*' => [
+                'nullable', 'mimes:pdf'
             ]
         ];
     }

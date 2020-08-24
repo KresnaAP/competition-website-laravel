@@ -17,7 +17,7 @@
                     </div>
                     <div class="card-body">
                         @foreach($user as $u)
-                            <form method="post" action="{{ route('user.update') }}" class="mb-5" autocomplete="off">
+                            <form method="post" action="{{ route('user.update') }}" class="mb-5" autocomplete="off" enctype="multipart/form-data">
                                 @csrf
 
                                 <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
@@ -54,9 +54,9 @@
                                         @endif
                                     </div>
 
-                                    @foreach($u->members as $key => $member)
+                                    @foreach ($u->members as $key => $member)
                                         <div class="form-group{{ $errors->has('member-'.$key) ? ' has-danger' : '' }}">
-                                            <input type="hidden" name="member-{{ $key }}-id" value="{{ $member->id }}">
+                                            <input type="hidden" name="memberid-{{ $key }}" value="{{ $member->id }}">
                                             <label class="form-control-label" for="input-member-{{ $key }}">{{ __('Team Member ').($key + 1) }}</label>
                                             <input type="text" name="member-{{ $key }}" id="input-member-{{ $key }}" class="form-control form-control-alternative{{ $errors->has('member-'.$key) ? ' is-invalid' : '' }}" placeholder="{{ __('Team Member ').($key + 1) }}" value="{{ old('name', $member->name) }}" required>
                                             @if ($errors->has('member-'.$key))
@@ -66,13 +66,12 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <label class="form-control-label small" for="input-certificate-{{ $key }}">Upload Certificate {{ $key + 1 }}</label>
-                                            @if($member->certificate)
-                                            <div>
-                                                <embed src="{{ url('/certificates/'.$member->certificate) }}" max-width="100%">
-                                            </div>
+                                            <label class="form-control-label small" for="input-certificate-{{ $key }}">Certificate for {{ $member->name }}</label>
+                                            @if ($member->certificate)
+                                                <div>
+                                                    <embed src="{{ asset('storage').$member->certificate }}" width="100%">
+                                                </div>
                                             @endif
-                                            - certificate-{{ $key }}
                                             <input type="file" name="certificate-{{ $key }}" id="input-certificate-{{ $key }}" class="form-control-file" accept="application/pdf">
                                         </div>
                                     @endforeach

@@ -59,23 +59,22 @@ class UserController extends Controller
     public function update(UserProfileRequest $request)
     {
         User::find($request->id)->update($request->all());
-        echo count($request->all());
-        for ($key = 0; $key < (count($request->all()) - 4) / 3; $key++)
+        for ($key = 0; $key < 3; $key++)
         {
-            Member::find($request->input('member-'.$key.'-id'))->update([
+            Member::find($request->input('memberid-'.$key))->update([
                 'name' => $request->input('member-'.$key),
-                'certificate' => $request->input('certificate-'.$key)
             ]);
 
-            // if($request->input('certificate-'.$key))
-            // {
-            //     $request->file('certificate-'.$key)->store('certificates');
+            if($request->file('certificate-'.$key))
+            {
+                $path = '/'.$request->file('certificate-'.$key)->store('public/certificates');
 
-	        //     $tujuan_upload = 'certificates';
-	        //     $file->move($tujuan_upload, $file->getClientOriginalName());
-            // }
+                Member::find($request->input('memberid-'.$key))->update([
+                    'certificate' => $path,
+                ]);
+            }
         }
-        return back()->withStatus(__('Profile successfully updated. '));
+        return back()->withStatus(__('Profile successfully updated. '.$request->input('certificate-'.$key)));
     }
 
     public function password(UserPasswordRequest $request)
