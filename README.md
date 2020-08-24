@@ -13,9 +13,9 @@
     ```sh
     $ php artisan migrate --seed
     ``` 
-5. To view, run 
+4. Create storage symlink to public, run 
     ```sh
-    $ php artisan serve
+    $ php artisan storage:link
     ``` 
 5. To view, run 
     ```sh
