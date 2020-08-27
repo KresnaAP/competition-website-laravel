@@ -14,7 +14,21 @@
                 <div class="row">
                     <div class="col">
                         <h2>{{ $member->name }}</h2>
-                        <img src="https://sdm.mercubuana.ac.id/wp-content/plugins/post-grid/assets/frontend/css/images/placeholder.png" alt="image">
+                        @if ($member->certificate)
+                            <div>
+                                <embed src="{{ asset('storage').$member->certificate }}" width="100%">
+                            </div>
+                            <div>
+                                <a class="btn btn-primary btn-lg my-3" href="{{ asset('storage').$member->certificate }}" download>Download</a>
+                            </div>
+                        @else
+                            <div>
+                                <img src="https://sdm.mercubuana.ac.id/wp-content/plugins/post-grid/assets/frontend/css/images/placeholder.png" alt="image">
+                            </div>
+                            <div>
+                                <p class="my-3">Nothing is here.</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <hr class="my-5">

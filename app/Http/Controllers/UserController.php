@@ -26,7 +26,8 @@ class UserController extends Controller
     public function index(User $model)
     {
         $users = User::paginate(10);
-        return view('users.index', ['users' => $users]);
+        $totals = User::count();
+        return view('users.index', ['users' => $users, 'totals' => $totals]);
     }
 
     public function search(Request $request)
@@ -91,6 +92,7 @@ class UserController extends Controller
 
     public function analytics()
     {
-        return view('users.analytics');
+        $totals = User::count();
+        return view('users.analytics', ['totals' => $totals]);
     }
 }
