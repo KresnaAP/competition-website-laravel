@@ -13,42 +13,42 @@ class MembersTableSeeder extends Seeder
     {
         DB::table('members')->insert([
             'user_id' => '1',
-            'name' => 'ega',
+            'name' => 'Ega',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('members')->insert([
             'user_id' => '1',
-            'name' => 'kresna',
+            'name' => 'Kresna',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('members')->insert([
             'user_id' => '1',
-            'name' => 'kiki',
+            'name' => 'Kiki',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('members')->insert([
             'user_id' => '2',
-            'name' => 'ega2',
+            'name' => 'Ega2',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('members')->insert([
             'user_id' => '2',
-            'name' => 'kresna2',
+            'name' => 'Kresna2',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('members')->insert([
             'user_id' => '2',
-            'name' => 'kiki2',
+            'name' => 'Kiki2',
             'created_at' => now(),
             'updated_at' => now()
         ]);
