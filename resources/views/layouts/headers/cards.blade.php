@@ -8,8 +8,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">User</h5>
-                                    <span class="h2 font-weight-bold mb-0">{{ $totalsMonth }}</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Total User</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{ $totalAll }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -18,16 +18,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                @if (!$minusMonth)
-                                    <span class="text-success mr-2">
-                                        <i class="fa fa-arrow-up"></i> {{ $percentMonth . '%' }}
-                                    </span>
-                                @else
-                                    <span class="text-danger mr-2">
-                                        <i class="fas fa-arrow-down"></i> {{ $percentMonth . '%' }}
-                                    </span>
-                                @endif
-                                <span class="text-nowrap">Since last month</span>
+                                <span class="text-nowrap">Since {{ date("d M Y", strtotime($since->created_at)) }}</span>
                             </p>
                         </div>
                     </div>
@@ -37,8 +28,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                                    <span class="h2 font-weight-bold mb-0">{{ $totalsWeek }}</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">New User</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{ $totalOne }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -47,18 +38,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-danger mr-2">
-                                @if (!$minusWeek)
-                                    <span class="text-success mr-2">
-                                        <i class="fa fa-arrow-up"></i> {{ $percentWeek . '%' }}
-                                    </span>
-                                @else
-                                    <span class="text-danger mr-2">
-                                        <i class="fas fa-arrow-down"></i> {{ $percentWeek . '%' }}
-                                    </span>
-                                @endif
-                                </span>
-                                <span class="text-nowrap">Since last week</span>
+                                <span class="text-nowrap">Today</span>
                             </p>
                         </div>
                     </div>

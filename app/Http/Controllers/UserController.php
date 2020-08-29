@@ -27,50 +27,12 @@ class UserController extends Controller
     public function index(User $model)
     {
         $users = User::paginate(10);
-        $totalsMonth = User::where('created_at', '>=', Carbon::now()->subMonth())->count();
 
-        $diffsMonth = User::where('created_at', '>=', Carbon::now()->subMonth(2))->where('created_at', '<=', Carbon::now()->subMonth(1))->count();
-        if($diffsMonth == 0)
-        {
-            $percentMonth = number_format($totalsMonth * 100, 2);
-        }
-        else
-        {
-            $percentMonth = number_format((($totalsMonth - $diffsMonth) / $diffsMonth) * 100, 2);
-        }
+        $totalOne = User::where('role', '=', 'user')->whereDate('created_at', Carbon::today())->count();
+        $totalAll = User::where('role', '=', 'user')->count();
+        $since = User::where('role', '=', 'user')->orderBy('created_at')->first();
 
-        if($percentMonth < 0.00) {
-            $minusMonth = true;
-            $percentMonth *= -1;
-        }
-        else
-        {
-            $minusMonth = false;
-        }
-
-        $dateWeek = Carbon::today()->subDays(7);
-        $totalsWeek = User::where('created_at', '>=', $dateWeek)->count();
-
-        $dateFromWeek = Carbon::today()->subDays(14);
-        $diffsWeek = User::where('created_at', '>=', $dateFromWeek)->where('created_at', '<=', $dateWeek)->count();
-        if($diffsWeek == 0)
-        {
-            $percentWeek = number_format($totalsWeek * 100, 2);
-        }
-        else
-        {
-            $percentWeek = number_format((($totalsWeek - $diffsWeek) / $diffsWeek) * 100, 2);
-        }
-
-        if($percentWeek < 0.00) {
-            $minusWeek = true;
-            $percentWeek *= -1;
-        }
-        else
-        {
-            $minusWeek = false;
-        }
-        return view('users.index', ['users' => $users, 'minusMonth' => $minusMonth, 'totalsMonth' => $totalsMonth, 'percentMonth' => $percentMonth, 'minusWeek' => $minusWeek, 'totalsWeek' => $totalsWeek, 'percentWeek' => $percentWeek]);
+        return view('users.index', ['users' => $users, 'totalOne' => $totalOne, 'totalAll' => $totalAll, 'since' => $since]);
     }
 
     public function search(Request $request)
