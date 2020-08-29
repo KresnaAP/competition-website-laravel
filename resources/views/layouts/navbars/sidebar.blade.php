@@ -86,11 +86,6 @@
                 </li>
                 @admin
                     <li class="nav-item">
-                        <a class="nav-link {{ Route::is('user.analytics') ? 'active' : '' }}" href="{{ route('user.analytics') }}">
-                            <i class="ni fa fa-chart-bar text-primary"></i>{{ __('Analytics') }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link {{ Route::is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
                             <i class="ni fa fa-users text-primary"></i>{{ __('User Management') }}
                         </a>

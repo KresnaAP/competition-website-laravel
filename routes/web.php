@@ -30,7 +30,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('user/update', ['as' => 'user.update', 'uses' => 'UserController@update']);
     Route::post('user/password', ['as' => 'user.password', 'uses' => 'UserController@password']);
     Route::get('user/delete/{id}', ['as' => 'user.delete', 'uses' => 'UserController@delete']);
-    Route::get('user/analytics', ['as' => 'user.analytics', 'uses' => 'UserController@analytics']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
